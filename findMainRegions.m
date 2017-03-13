@@ -59,20 +59,31 @@ end
 
 %% Crop each connected component
 Sdata=regionprops(L,'BoundingBox');
- 
-for i=1:num
-    temp = imcrop(imgOrg,Sdata(i).BoundingBox);
-    Name = strcat('Object Number:',num2str(i));
-    figure,imshow(temp); title(Name);
-    findCircles(temp);
-end
 
+% 
+% for i=1:num
+%     temp = imcrop(imgOrg,Sdata(i).BoundingBox);
+%     Name = strcat('Object Number:',num2str(i));
+%     figure,imshow(temp); title(Name);
+%     findCircles(temp);
+% end
+% 
 
 %% find max region as test answers
 measurements = regionprops(L, 'Area');
 allAreas = [measurements.Area];
 [maxRegion index] = max(allAreas);
 imgMax = imcrop(imgOrg, Sdata(index).BoundingBox);
+imgName = imcrop(imgOrg, Sdata(4).BoundingBox);
+imgSurname = imcrop(imgOrg, Sdata(5).BoundingBox);
 figure, imshow(imgMax);
+figure, imshow(imgName);
+%imwrite(imgName,'Name.jpg');
+figure, imshow(imgSurname);
+%imwrite(imgSurname,'Surname.jpg');
 [LL centroids] = findCircles(imgMax);
+[LLFName centroidsName] = findCircles(imgName);
+findLetters(centroidsName);
+[LLSurname centroidsSurname] = findCircles(imgSurname);
+findLetters(centroidsSurname);
 findTestMarked2(centroids);
