@@ -3,7 +3,7 @@ close all;
 clear
 clc
 %img = imread('testMarked.jpg');
-img = imread('testMarked.jpg');
+img = imread('output.jpg');
 imgOrg = img;
 img = rgb2gray(img);
 %title('Original Image');
