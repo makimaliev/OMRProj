@@ -1,3 +1,4 @@
+Name/Surname:
 w(Name)=608
 h(Name)=1257
 h(buble)=40
@@ -5,3 +6,14 @@ h(buble_margin)=10
 startPointY=110
 1257/40 = 31.5
 1257/110 = 11.5
+
+Test:
+w(Test)=2109
+h(Test)=806
+startX = 56 (2109/37.66)
+startY = 59 (2109/35.74)
+h(buble)=40 (2109/52.65 or 806/20.15)
+h(buble_margin in Y) = 9.85 (806/81.82)
+w(buble_margin in X) = 10 (2109/210.9)
+w(column_margin) = 60 (2109/35.15)
+w(X) = 240 (2109/8.78)

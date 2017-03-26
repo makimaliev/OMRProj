@@ -1,8 +1,8 @@
-def findLetters(cnts):
+def findLetters(imH, cnts):
 	from imutils import contours
 	import cv2
 	from createLetters import createLetterObjs
-	letters = createLetterObjs()
+	letters = createLetterObjs(imH)
 	cnts = contours.sort_contours(cnts, method="left-to-right")[0]
 	text = ""
 	for c in cnts:

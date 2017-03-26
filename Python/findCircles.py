@@ -8,7 +8,7 @@ def findCircles(img):
 	#cv2.imshow("Gray", gray)
 	#bw = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
 	#bw = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,11,2)
-	ret,bw = cv2.threshold(gray,200,255,cv2.THRESH_BINARY)
+	ret,bw = cv2.threshold(gray,190,255,cv2.THRESH_BINARY)
 	bw=~bw
 	#Apply imopen
 	op = cv2.morphologyEx(bw, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_CROSS,(9,9)))

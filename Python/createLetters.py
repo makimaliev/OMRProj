@@ -1,4 +1,4 @@
-def createLetterObjs():
+def createLetterObjs(imH):
 	import string
 
 	class Letter:
@@ -12,11 +12,14 @@ def createLetterObjs():
 	letters.remove('Q')
 	letters.remove('W')
 	letters.remove('X')
-	startPointY = 110;
+	#startPointY = 110;
+	startPointY = imH/11.5;
+	bubleH = imH/31.5
+	bubleMargin = imH/125.7
 	for i in letters:
-		endY = startPointY+40
+		endY = startPointY+bubleH
 		temp = Letter(i, startPointY, endY)
-		startPointY = endY + 10
+		startPointY = endY + bubleMargin
 		letterObj.append(temp)
 
 	return letterObj
