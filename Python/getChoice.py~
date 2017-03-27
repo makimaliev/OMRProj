@@ -1,34 +1,35 @@
-def getChoice(x,w):
+def getChoice(x, imW):
 	out = ''
-	startX = w/37.66
-	bubleH = w/52.65
-	bubleMargin = w/210.9
-	columnMargin = w/35.15
-	endX = startX + bubleH
+	startX = imW/37.66
+	bubleW = imW/52.72
+	bubleMargin = imW/210.9
+	xMargin = imW/35.15
+
+	endX = startX + bubleW
 	for i in range(1,8):
 		 if x >= startX - 2 and x <= endX + 2:
 		     out = 'A'
 		     break
 		 startX = endX + bubleMargin
-		 endX = startX + bubleH
+		 endX = startX + bubleW
 		 if x >= startX - 2 and x <= endX + 2:
 		     out = 'B'
 		     break
 		 startX = endX + bubleMargin
-		 endX = startX + bubleH
+		 endX = startX + bubleW
 		 if x >= startX - 2 and x <= endX + 2:
 		     out = 'C'
 		     break
 		 startX = endX + bubleMargin
-		 endX = startX + bubleH
+		 endX = startX + bubleW
 		 if x >= startX - 2 and x <= endX + 2:
 		     out = 'D'
 		     break
 		 startX = endX + bubleMargin
-		 endX = startX + bubleH
+		 endX = startX + bubleW
 		 if x >= startX - 2  and x <= endX + 2:
 		     out = 'E'
 		     break
-		 startX = endX + columnMargin
-		 endX = startX + bubleH
+		 startX = endX + 60
+		 endX = startX + bubleW
 	return out

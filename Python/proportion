@@ -9,12 +9,15 @@ startPointY=110
 
 Test:
 w(Test)=2109
-h(Test)=806
+h(Test)=849
 startX = 56 (2109/37.66)
 startY = 59 (2109/35.74)
-h(buble)=40 (2109/52.65 or 806/20.15)
+h(buble)=40 (2109/52.65 or 849/21.22)
 h(buble_margin in Y) = 9.85 (806/81.82)
 w(buble_margin in X) = 10 (2109/210.9)
 w(column_margin) = 60 (2109/35.15)
 w(X) = 240 (2109/8.78)
 w(X full) = 300 (2109/
+
+2122/300 = 7.07
+1500/300 = 5.00

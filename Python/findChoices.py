@@ -1,4 +1,4 @@
-def findChoices(cnts):
+def findChoices(cnts, imW, imH):
 	from createChoices import createChoiceObjs
 	from getChoice import getChoice
 	import cv2
@@ -10,7 +10,7 @@ def findChoices(cnts):
 
 	choices = {}
 	index = 1
-	choiceObjs = createChoiceObjs()
+	choiceObjs = createChoiceObjs(imW, imH)
 	for c in cnts:
 		(x, y, w, h) = cv2.boundingRect(c)
 		centroidX = x+w/2
@@ -18,11 +18,11 @@ def findChoices(cnts):
 		for choice in choiceObjs:
 			if centroidY >= choice.startPointY - 2 and centroidY <= choice.endPointY + 2 and centroidX >= choice.startPointX - 2 and centroidX <= choice.endPointX + 2:
 				if not choice.number in choices:
-					choices[choice.number] = getChoice(centroidX)
+					choices[choice.number] = getChoice(centroidX, imW)
 				else:
 					#choices[choice.number].update(getChoice(centroidX))
 					temp = choices[choice.number]
-					new = [temp, getChoice(centroidX)]
+					new = [temp, getChoice(centroidX, imW)]
 					choices[choice.number] = new
 				break
 	for t in range(1,106):

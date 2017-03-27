@@ -1,4 +1,4 @@
-def createChoiceObjs(w,h):
+def createChoiceObjs(imW, imH):
 
 	class Choice:
 		def __init__(self):
@@ -10,12 +10,12 @@ def createChoiceObjs(w,h):
 
 	choiceObjs = []
 	numbers = list(range(1,106))
-	startX = w/37.66
-	startY = w/35.74
-	bubleH = h/20.15
-	widthX = w/8.78
-	bubleMargin = h/81.82
-	widthXFull = w/7.03
+	startX = imW/37.66
+	startY = imH/14.38
+	bubleH = imH/21.22
+	bubleMargin = imH/86.19
+	widthX = imW/8.78
+	widhtXFull = imW/7.03
 
 	currentX = startX
 	currentY = startY
@@ -35,7 +35,7 @@ def createChoiceObjs(w,h):
 		count = count + 1
 		if count == 15:
 			currentY = startY
-			currentX = currentX + widthXFull
+			currentX = currentX + widhtXFull
 			count = 0;
 
 	return choiceObjs
