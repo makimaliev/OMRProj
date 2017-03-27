@@ -1,6 +1,5 @@
 def findMainRegions(image, DEBUG = 0):
 	import cv2
-	from utils import sort_contours
 
 	#read image and find height, width
 	height, width = image.shape[:2]
@@ -31,6 +30,6 @@ def findMainRegions(image, DEBUG = 0):
 			largeCnts.append(c)
 	
 	#sort largest regions from top to bottom
-	(largeCnts, boundingBoxes) = sort_contours(largeCnts, "top-to-bottom")
+	largeCnts = sorted(largeCnts, key=cv2.contourArea, reverse=True)
 
 	return largeCnts

@@ -16,9 +16,9 @@ def readNameAndGrade(image, largeCnts, DEBUG = 0):
 	#crop as images
 	(x1, y1, w1, h1) = cv2.boundingRect(largeCnts[1])
 	maxH1 = image[y1:y1+h1, x1:x1+w1]
-	(x2, y2, w2, h2) = cv2.boundingRect(largeCnts[0])
+	(x2, y2, w2, h2) = cv2.boundingRect(largeCnts[2])
 	maxH2 = image[y2:y2+h2, x2:x2+w2]
-	(x3, y3, w3, h3) = cv2.boundingRect(largeCnts[4])
+	(x3, y3, w3, h3) = cv2.boundingRect(largeCnts[0])
 	maxW = image[y3:y3+h3, x3:x3+w3]
 
 	if DEBUG == 1:
