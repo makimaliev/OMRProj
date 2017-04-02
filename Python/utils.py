@@ -1,7 +1,18 @@
-def imResize(img, scale):
+def imResize(image):
 	import cv2
-	newx,newy = img.shape[1]/scale,img.shape[0]/scale #new size (w,h)
-	newimage = cv2.resize(img,(newx,newy))
+	height = image.shape[0]
+	width = image.shape[1]
+	maxW = 1000.0
+	maxH = 600.0
+	dim = (width, height)
+	if height > maxH or width > maxW:
+		if height > width:
+			r = maxH/height
+			dim = (int(width * r), int(maxH))
+		else:
+			r = maxW/width
+			dim = (int(maxW), int(height * r))
+	newimage = cv2.resize(image,dim)
 	return newimage
 
 def sort_contours(cnts, method="left-to-right"):

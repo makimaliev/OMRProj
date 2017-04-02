@@ -28,12 +28,14 @@ def readNameAndGrade(image, largeCnts, DEBUG = 0):
 			cv2.drawContours(image, [cc], -1, color, 3)
 			(x, y, w, h) = cv2.boundingRect(cc)
 			temp = image[y:y+h, x:x+w]
-			cv2.imshow("Cropped",temp)
+			cv2.imshow("Cropped", imResize(temp))
 			cv2.waitKey(0)
+			cv2.destroyAllWindows()
 	
-	#newIm = imResize(image,3)
-	#cv2.imshow("Fig", newIm)
-	#cv2.waitKey(0)
+	if DEBUG == 1:
+		cv2.imshow("Fig", imResize(image))
+		cv2.waitKey(0)
+		cv2.destroyAllWindows()
 
 	#find circles and recognize letters for name
 	cntsName = findCircles(maxH1)
