@@ -5,16 +5,107 @@
 %\newdate{date}{17}{02}{2017}
 %\date{\displaydate{date}}
 
-\title{Bubble sheet multiple choice scanner and test grader using computer vision and image processing techniques, along with Matlab\textsuperscript{\textregistered} Image Processing Toolbox}
-\author{Marlen Akimaliev\\makimaliev@gmail.com}
+\title{Report on Building Optical Test Grading System using Image Processing\\
+\large BIL624 - Simulation Modeling and Analysis\\Computer Engineering\\Faculty of Natural and Applied Sciences\\Kyrgyzstan-Turkey Manas University}
+\author{Marlen Akimaliev}
 
 \begin{document}
 \maketitle
-\section{Abstract}
-\section{Introduction}
-\section{What is Optical Mark Recognition (OMR)?}
-Optical Mark Recognition, or OMR for short, is the process of automatically analyzing human-marked documents and interpreting their results. Arguably, the most famous, easily recognizable form of OMR are bubble sheet multiple choice tests, not unlike the ones you took in elementary school, middle school, or even high school. If you’re unfamiliar with “bubble sheet tests” or the trademark/corporate name of “Scantron tests”, they are simply multiple-choice tests that you take as a student. Each question on the exam is a multiple choice — and you use a \#2 pencil to mark the “bubble” that corresponds to the correct answer. 
-The most notable bubble sheet test you experienced (at least in the United States) were taking the SATs during high school, prior to filling out college admission applications. I believe that the SATs use the software provided by Scantron to perform OMR and grade student exams, but I could easily be wrong there. In short, what I’m trying to say is that there is a massive market for Optical Mark Recognition and the ability to grade and interpret human-marked forms and exams.
+\section*{Abstract}
+The main objective of this study is to provide a supportive community for teachers in Kyrgyzstan. The development of an optical test grading software that can be used for counting the examination score from the multiple-choice answer sheets is explained. This study will be focused on individual approach with completely new product for teachers in local schools, universities and etc. Nowadays there are many teachers, professors generally making their grade calculations of quizzes or test questions by hand, rather than considering on program that will automatically make calculation of sheets. In this study answer sheet will be scanned and the scanned image of the answer sheet will be given as input to the software system. Using Image processing we will find the answers marked to each of the 105 questions by finding the region of interest and applying several algorithms. Optical Test Grading system was implemented using the Python programming language.\\
+\textbf{Keywords:} Optical Test Grading, Optical Mark Recognition, Image Processing, OpenCV Python
+\section{INTRODUCTION}
+With increasing knowledge and technological progress of society, our country requires to provide a supportive community for teachers in local educational institutions. Nowadays, there are no tools to automate grade calculation of quizzes or test questions. We wanted to develop a software program that makes grading effortless while capturing and reporting with useful data on assessments.
+
+Multiple-choice questions are widespread mechanism used by schools and universities to test student performance. They are common on standardized tests. The relevance of the problem is the fact that big organizations use auto Evaluation of OMR software and dedicated scanner for grading multiple choice questions. But small institutes and individual teachers cannot afford this convenient method of grading and have to do time consuming manual grading. So our aim was to develop a suitable software that would detect marks and hence prepare their results according to the needs.
+
+One of the most important usages of program is checking multiple choices question exam students choose the answer by filling square choice on a printed sheet. Then after scanning, these papers will be checked by special software automatically.
+
+Today multiple-choice questions have become an integral part of the educational system. Standardized tests also in use in local private schools and universities to judge students' academic performance. The students have to fill the right box or circle for the appropriate answer to the respective questions. During the inspection or examining phase normally an examiner spend one week to determine the right answer to the questions. This is a manual process and a lot of errors can occur in the manual process such as counting mistake and many more. Actually in local educational institutions answer sheets are checked by optical machine, but checkup process takes minimum three weeks. To avoid this mistakes OTG system is used.
+
+This study was implemented using Python Image Processing Toolbox.
+\section{RELATED WORK}
+Optical Mark Reader (OMR), also called "mark sensing", is a method of scanning technology in which data is input through marks made in predefined positions on a form and entering data into a computer system. Therefore, OMR is best for handling discrete data, where values fall into a limited number of values. For examples, gender, occupation, religion, etc.
+
+The OMR scanners began to be used excessively in the early 1950’s, which used a series of sensing brushes in detecting graphite particles on a document that is passed through the machine. Image-based OMR studies by Chinnasarn et al. presented PC-type microcomputer and image scanner. The system operation could be distinguished into two modes: learning mode and recognition mode. Data extraction from each area can be performed based on the horizontal and vertical projections. For the purpose of checking answer, the number of black pixels in each answer block is counted, and the difference between those numbers in the input and its corresponding model is used as decision criterion. This was a transition between punch cards and barcodes.
+
+Chinnasarn et al, presented a system which was based on Personal Computer-type microcontroller and image scanner. The system operations can be distinguished in two modes: learning mode and operation mode. The data extraction from each area can be performed based on the horizontal and vertical projections of the histogram. For the answer checking purpose, the number of black pixels in each answer block is counted, and the difference of those numbers between the input and its corresponding model is used as a decision criterion. This is the first image-based OMR technique.
+
+Andrea Spadaccini described JECT-OMR, a system that analyses digital images representing scans of multiple-choice tests compiled by students. The system performs a structural analysis of the document in order to get the chosen answer for each question, and it also contains a bar-code decoder, used for the identification for additional information encoded in the document. JECT-OMR was implemented using the Python programming language, and leverages the power of the Gamera framework in order to accomplish its task.
+
+Tien Dzung Nguyen et al. proposes grading multiple choice test which is based on a camera with reliability and efficiency. The bounds of the answer sheet image captured by the camera are first allocated using Hough transform and then skew-corrected into the proper orientation, followed by the normalization to a given size. The tick mark corresponding to the answer for each question can be recognized by allocation of the mask which wraps the answer area.
+
+Nutchanat Sattayakawee proposes the algorithm of test scoring for grid answer sheets. The method used is based on projection profile and thresholding techniques.
+
+Rakesh S et al. proposed system consists of an ordinary printer, scanner and a computer to perform computation and is assisted with a graphical user interface. Users can design forms of their choice and use it for survey or other related activities. The filled forms are scanned and scanned images are given as input to a computer, which does the computation and stores the result in a user understandable spreadsheet. The system is independent of hardware and system platform, thereby making it platform independent.
+
+A. AL-Marake by presents a low cost and fast solution for optical mark recognition system working in multi-core processor system. The answer sheet is captured using a digital camera and the image is processed. Initially the borders of the sheet are located then the bubbles are detected. Fast techniques are used to detect the bubbles without a rotation correction. An adaptive binarization has been used to overcome the lighting effects of the camera based images.
+
+Francisco de Assis Zampirolli et al. presents a simple and innovative method to transform captured images of answer sheets into reduced binary matrices containing answers to the questions plus some control elements, using simple morphological operations for segmentation.
+
+Azman Talib et al. proposes shape-based vision algorithm, a hierarchical template-matching approach that implemented in this system to verify the imaging and inspecting the correct answer of the Optical Mark Recognition (OMR) sheet form. An OMR answer sheet scheme with all correct answers are marked on the paper and will be used as a template for object recognition during the matching process. Region of interest (ROI) is selected and filtered into grey level to extract the contour of the object. The image is then pre-processed and trained using image processing technique. A low-cost 1.3 MP web camera is used to acquire the marked OMR, image for all questions together with the sequence number; this is to ensure the system can distinguish between different questions having the same answer.
+
+Ms.Sumitra B. Gaikwad aims to develop Image processing based Optical Mark Recognition sheet scanning system. Find that lot of competitive exams are being conducted as entrance exams. These exams consist of MCQs. The students have to fill the right box or circle in the appropriate answer to the respective questions. During the inspection or examining phase normally a stencil is provided to the examiner to determine the right answer to the questions. This is a manual process and a lot of errors can occur in the manual process such as counting mistake and many more. To avoid this mistakes OMR system is used. In this system OMR answer sheet will be scanned and the scanned image of the answer sheet will be given as input to the software system. Using Image processing.
+
+Lopresti et al explained the process of optical mark recognition with reference to Remark Office OMR 3.0, made by Principia Products. Also he reported that, for years people who do statistical analysis have been designing questionnaires, and getting them filled out by respondents or interviewers, and then somehow wrestling the data into a computer. With the first computers, much of the data was input by creating decks of punched cards. While this process allowed one to create those necessary computer files, it was subject to input error and thus had to be verified. At the very same time also it allows multiple-choice forms to be read.
+
+Kia mentioned that Optical Mark Recognition (OMR) is used for standardization testing as well as course enrollment and attendance in education.
+
+Dillman studied the impact of OMR forms on which it responded it to be relevant issue. One possible disadvantage with OMR surveys is that they may suppress response rates. OMR surveys are often combined with other cost-cutting measures, so their low response rates may simply be an artifact of other choices about survey administration. Generally OMR forms have one standard ink color that provides limited visual appeal creating a disincentive for their response. Moreover these forms are also more tedious to fill out. Rather than simply reading through the survey and checking off or circling responses, the respondent must carefully fill in a circle or “bubble” for each question answer.
+\section{THEORY AND METHODOLOGY OF OTG SYSTEM}
+In this section, we propose the novel technique of Optical Test Grading system. These have been explained in detail in the following sub-sections.
+\subsection{System Requirements and analysis}
+System requirement phase will explore and define problems, actually any software system is supposed to facilitate some process which was made with another approach. Thus we need to define system problems in educational institutes to make a system which will later work using android platform. But it is another history, another project. Optical Test Grading system will automate these processes, problems are the following: paper based quizzes, test, and exams. Second thing is we need to determine system requirements like: Who is going to use the system? How? These general questions that get answered during system requirement phase. During investigation in educational institutes we have found a ways to solve problems listed above. To make system completely automated for paper based answer sheets we will need to find the best method which will make bubble recognition accurately.
+
+The purpose of the Optical Test Grading system analysis is to collect issues, to determine what to do with existing problem and what a system must do to solve these issues. These is three solutions to our problem ,they are as following do nothing with existing problem and continue use previous applications, modify existing system or develop new one. In Bishkek there are not ready system to modify therefore we will to create a new system, a base of mobile application. The main objective of the project thesis is to provide a supportive community for teachers in Bishkek. 
+\subsection{System Design}
+The result of this phase is a technical design that specifies following issues inputs, outputs. The system can be deployed on any operating system since whole system will be done in Matlab (platform independent).In the design stage, the programming language and the hardware and software platform in which the new system will run are also decided. This system is programmed using Matlab Image processing toolbox. Here is algorithm sequence process 
+%Put figure here***************
+\subsection{Perform Image processing, analysis, and algorithm development}
+mage processing toolbox provides a comprehensive set of reference-standard algorithms and workflow aps for image processing, analysis, visualization, and algorithm development. We can perform image segmentation, image enhancement, noise reduction, geometric transformations, image registration, and 3D image processing.
+
+Image processing toolbox apps let you automate common image processing workflows. We can interactively segment image data, compare image registration techniques and batch-process large data sets. Visualization functions and apps let you explore images, 3D volumes, and videos, adjust contrast, create histograms, and manipulate regions of interest (ROIs).
+\subsection{Image Processing Explained}
+This is the step taken before the "major" image processing task. The problem here is to perform some basic tasks in order to render the resulting image more suitable for the job to follow. In this case it may involve enhancing the contrast, removing noise, or identifying regions likely to contain the postcode.
+\subsection{Image Enhancement}
+Image Enhancement techniques in Image Processing Toolbox enable you to increase the signal-to-noise ratio and accentuate image features by modifying the colors or intensities of an image. 
+This relates to processing an image so that the result is more appropriate for an application. Example include:
+\begin{itemize}
+\item Sharpening or de-blurring an out of focus image.
+\item Highlighting edges
+\item Improving image contrast or brightening an image
+\item Removing noise
+\end{itemize}
+Removing noise from an image: noise being random errors in the image. Noise is a very common problem in data transmission: all sorts of electronic components may affect data passing through them, and the results may be undesirable. Each type of noise requiring a different method of removal.
+\subsection{Morphological Operations}
+Morphological operators enable us to enhance contrast, thin regions, or perform skeletonization on regions. Toolbox includes a comprehensive set of morphological operations.
+
+Dilation and erosion are two common morphological operations used in various computer vision and image processing tasks such as blob analysis and text detection. Both dilation and erosion are binary operations. They take an image and a binary kernel matrix as inputs and produce an image as the output. Dilation can be defined as follows: pixel (x, y) of the output image is the maximum pixel value of the neighborhood defined by the kernel centered at (x, y) of the input image. Similarly erosion takes the minimum of the neighborhood.
+\subsection{Image Deblurring}
+Image deblurring algorithms in Image Processing Toolbox include blind, and regularized filter convolution, as well as conversions between point spread and optical transfer functions. These functions help correct blurring caused by out-of-focus optics, movement by the camera or the subject during image capture, atmospheric conditions, short exposure time, and other factors.
+\subsection{Image Analysis}
+We can calculate the properties of the regions in images, such as area, centroid, bounding box, and orientation. Use the Image region analysis application to automatically count, sort, and remove regions based on properties. [1]
+\subsection{Edge Detection}
+Edge detection algorithms let you identify object boundaries in an image. These algorithms include the Sobel, Prewitt, Roberts, Canny, and Laplacian of Gaussian methods. The Canny method can detect true weak edges without being fooled by noise.
+
+Obtaining the edges of an image. This may be necessary for the measurement of objects. Once we have the edges we can measure their spread, and the area contained within them. We can also use edge detection algorithms as a first step in edge enhancement.
+\subsection{Hough Transform}
+he Hough transform is designed to identify lines and curves within an image. Using the Hough transform we can:
+\begin{itemize}
+\item Find line segments and endpoints
+\item Measure angles
+\item Find circles based on size
+\end{itemize}
+\subsection{Types of images}
+We shall consider four types of images in image processing:
+\begin{enumerate}
+\item BINARY. Each pixel is just black or white. Since there are only two possible values for each pixel, we only need one bit per pixel. Such images can therefore be very efficient in terms of storage. Images for which a binary representation may be suitable include text (printed or handwriting), fingerprints, or architectural plans.
+\item GRAYSCALE. Each pixel is a shade of grey, normally from 0 to 255, This Range means that each pixel can be represented by eight bits, or exactly one byte. This is a very natural range for image file handling. Other grayscale ranges are used, but generally they are a power of 2. Such images arise in medicine (X-rays), images of printed works, and indeed 256 different grey levels is sufficient for the recognition of most natural objects.
+\item RGB. Here each pixel has a particular color, that color being described by the amount of red, green and blue in it. If each of these components has a range 0-255, this gives a total of $253^3=16777216$ different possible colors in the image. This is enough colors for any image. Since the total number of bits required for each pixel is 24, such images are also called 24-bit color images. Such an image may be considered as consisting of a stack of three matrices, representing the red, green and blue values for each pixel. This means that for every pixel there correspond three values.
+\item INDEXED. Most color images only have a small subset of the more than sixteen million possible colors. For convenience of storage and le handling, the image has an associated color map, or color palette, which is simply a list of all the colors used in that image. Each pixel has a value which does not give its color (as for an RGB image), but an index to the color in the map. It is convenient if an image has 256 color or less, for then the index values will only require one byte each to store. Some image file formats (for example, CompuServe GIF), allow only 256 colors or fewer in an image.
+\end{enumerate}
+\subsection{Testing}
+For testing we did not use any automated frameworks. All testing was done by using Command Line execution of Python codes.
 \medskip
 \begin{thebibliography}{9}
 \bibitem{rosettacode} Rosetta Code Link, \\\texttt{https://rosettacode.org/wiki/Runge-Kutta-method}

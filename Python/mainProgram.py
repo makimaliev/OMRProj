@@ -5,6 +5,7 @@ from scan import scan
 from utils import imResize
 
 image = cv2.imread("images/testMarked.jpg")
+#image = cv2.imread("images/test1.jpg")
 #image = scan(image)
 largeCnts = findMainRegions(image,1)
 
